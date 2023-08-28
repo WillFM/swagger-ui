@@ -56,6 +56,7 @@ class Info extends React.Component {
     getComponent: PropTypes.func.isRequired,
     oas3selectors: PropTypes.func,
     selectedServer: PropTypes.string,
+    oasVersion: PropTypes.string,
   }
 
   render() {
@@ -68,6 +69,7 @@ class Info extends React.Component {
       externalDocs,
       selectedServer,
       url: specUrl,
+      oasVersion
     } = this.props
     const version = info.get("version")
     const description = info.get("description")
@@ -89,6 +91,7 @@ class Info extends React.Component {
     const Markdown = getComponent("Markdown", true)
     const Link = getComponent("Link")
     const VersionStamp = getComponent("VersionStamp")
+    const OpenAPIVersion = getComponent("OpenAPIVersion")
     const InfoUrl = getComponent("InfoUrl")
     const InfoBasePath = getComponent("InfoBasePath")
     const License = getComponent("License")
@@ -99,7 +102,8 @@ class Info extends React.Component {
         <hgroup className="main">
           <h2 className="title">
             {title}
-            {version && <VersionStamp version={version}></VersionStamp>}
+            {version && <VersionStamp version={version} oasVersion={oasVersion} />}
+            {oasVersion && <OpenAPIVersion oasVersion={oasVersion} />}
           </h2>
           {host || basePath ? (
             <InfoBasePath host={host} basePath={basePath} />

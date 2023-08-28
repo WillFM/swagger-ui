@@ -14,7 +14,9 @@ describe("<InfoContainer/>", function () {
       url () {},
       basePath () {},
       host () {},
-      externalDocs () {},
+      externalDocs() {},
+      isSwagger2 () {},
+      isOAS30 () {}
     },
     oas3Selectors: {
       selectedServer () {},
